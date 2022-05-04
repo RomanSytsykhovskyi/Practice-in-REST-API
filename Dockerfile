@@ -1,4 +1,4 @@
-FROM node
+FROM node:16-slim
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -15,6 +15,4 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
-
-CMD [ "npm", "run", "server" ]
+CMD [ "npm", "run", "start" ]
