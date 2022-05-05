@@ -8,15 +8,17 @@ const authorization = require("./routes/auth");
 const universities = require("./routes/universities");
 
 //middlewares
+const bodyParser = require("./framework/bodyParser");
 const parserJSON = require("./framework/Parser");
-const parsedURL = require("./framework/ParserUrl");
+const parserURL = require("./framework/ParserUrl");
 
 const PORT = process.env.PORT || config.port || 8080;
 
 const app = new Server();
 
+app.use(bodyParser);
 app.use(parserJSON);
-app.use(parsedURL);
+app.use(parserURL);
 
 app.addRouter(authorization);
 app.addRouter(universities);
