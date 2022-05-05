@@ -1,15 +1,24 @@
-const http = require("http");
 const config = require("config");
-const universities = require("./routers/universities");
+
+//framework
+const Server = require("./framework/Application");
+
+//routers
+const authorization = require("./routes/auth");
+const universities = require("./routes/universities");
+
+//middlewares
+const parserJSON = require("./framework/Parser");
+const parsedURL = require("./framework/ParserUrl");
 
 const PORT = process.env.PORT || config.port || 8080;
 
-const app = http.createServer((req, res) => {
-  try {
-    const emitted = universities.emit(req, res);
-  } catch (e) {
-    res.writeHead(400).end(e.message);
-  }
-});
+const app = new Server();
+
+app.use(parserJSON);
+app.use(parsedURL);
+
+app.addRouter(authorization);
+app.addRouter(universities);
 
 app.listen(PORT, () => console.log(`Server Is Running At Port ${PORT}...`));
