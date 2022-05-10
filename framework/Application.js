@@ -26,11 +26,13 @@ class Server {
       this.middlewares.forEach((middleware) => {
         middleware(req, res);
       });
+
       const emitted = this.emitter.emit(
         this._getRouteMask(req.pathname, req.method),
         req,
         res
       );
+
       if (!emitted) {
         res.end();
       }

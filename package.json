@@ -1,7 +1,7 @@
 {
   "name": "pratice",
   "version": "1.0.0",
-  "description": "It's my pracrice where I implemented express, react and API",
+  "description": "It's my pracrice where I implemented node, react and API",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -23,7 +23,9 @@
   "author": "Sytsykhovskyi Roman",
   "license": "ISC",
   "dependencies": {
-    "config": "^3.3.7"
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.7",
+    "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
     "concurrently": "^7.1.0",
